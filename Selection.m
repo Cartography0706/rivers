@@ -13,15 +13,15 @@ for a=100:100:a1
                 
                 
                 
-                k1=a;%×î¶ÌÂ·¾¶È¨Öµ
-                k2=b;%MSTÈ¨Öµ
-                k3=c;%³¬ÏñËØÃæ»ıÈ¨Öµ
-                k4=1;%½ÚµãµÄ¶ÈÈ¨Öµ
-                LevelPresever=d;%ĞèÒª±£³Ö¶àÉÙ°Ù·Ö±È
+                k1=a;%æœ€çŸ­è·¯å¾„æƒå€¼
+                k2=b;%MSTæƒå€¼
+                k3=c;%è¶…åƒç´ é¢ç§¯æƒå€¼
+                k4=1;%èŠ‚ç‚¹çš„åº¦æƒå€¼
+                LevelPresever=d;%éœ€è¦ä¿æŒå¤šå°‘ç™¾åˆ†æ¯”
                 
                 Names=strcat(num2str(k1),'_',num2str(k2),'_',num2str(k3),'_',num2str(k4),'_',num2str(LevelPresever));
                 
-                src=imread('RiverlscAll.png');
+                src=imread('Original River Networks.png');
                 
                 
                 
@@ -54,8 +54,8 @@ for a=100:100:a1
 %                 diplayColor(Names,Presever,rgb,sumQZ2);
                 
                 
-                %¸ù¾İsuperpixelNumÖĞµÄÃ¿¸ö½ÚµãµÄ´ÎÊı °´»Ò¶ÈµÈ¼¶ ÏÔÊ¾Ã¿¸ö³¬ÏñËØµÄÖØÒªĞÔ
-%Ëã·¨Ë¼Â· ×î´óµÄÎªÒ»¸öÑÕÉ« ×îĞ¡µÄÎªÒ»¸öÑÕÉ« ÖĞ¼ä¸ù¾İµÈ¼¶ÊıÁ¿ l ÅĞ¶Ï½øĞĞÏÔÊ¾
+                %æ ¹æ®superpixelNumä¸­çš„æ¯ä¸ªèŠ‚ç‚¹çš„æ¬¡æ•° æŒ‰ç°åº¦ç­‰çº§ æ˜¾ç¤ºæ¯ä¸ªè¶…åƒç´ çš„é‡è¦æ€§
+%ç®—æ³•æ€è·¯ æœ€å¤§çš„ä¸ºä¸€ä¸ªé¢œè‰² æœ€å°çš„ä¸ºä¸€ä¸ªé¢œè‰² ä¸­é—´æ ¹æ®ç­‰çº§æ•°é‡ l åˆ¤æ–­è¿›è¡Œæ˜¾ç¤º
 
 bw=im2bw(src);
 [L,num] = bwlabel(bw,8);
@@ -63,7 +63,7 @@ bw=im2bw(src);
 [maxV,maxL]=max(NrsuperpixelNum2);
 [minV,minL]=min(NrsuperpixelNum2);
 
-l=8;%¼¶±ğÊıÁ¿
+l=8;%çº§åˆ«æ•°é‡
 chazhi=maxV-minV;
 zengzhi=chazhi/l;
 
@@ -76,7 +76,7 @@ B=rgb(:,:,3); %blue
 
 
 for s=1:num
-    level= (NrsuperpixelNum2(s,1)-minV)/zengzhi;  %²»Í¬µÄ»ù±¾ÏÔÊ¾²»Í¬µÄ»ÒÉ« »òÕßÑÕÉ«
+    level= (NrsuperpixelNum2(s,1)-minV)/zengzhi;  %ä¸åŒçš„åŸºæœ¬æ˜¾ç¤ºä¸åŒçš„ç°è‰² æˆ–è€…é¢œè‰²
     s
     if  level>=0 && level<1
 %         '1'
@@ -299,12 +299,12 @@ maxV
 [minV,minL]=min(sumQZ);
 minV
 
-l=8;%¼¶±ğÊıÁ¿
+l=8;%çº§åˆ«æ•°é‡
 chazhi=maxV-minV;
 zengzhi=chazhi/l;
 
 for s=1:num
-    %     level= (sumQZ(s,1)-minV)/zengzhi;  %²»Í¬µÄ»ù±¾ÏÔÊ¾²»Í¬µÄ»ÒÉ« »òÕßÑÕÉ«
+    %     level= (sumQZ(s,1)-minV)/zengzhi;  %ä¸åŒçš„åŸºæœ¬æ˜¾ç¤ºä¸åŒçš„ç°è‰² æˆ–è€…é¢œè‰²
     s
     level= sumQZ(s,1);
     if  level>LevelPresever
@@ -336,7 +336,7 @@ outrgb(:,:,3)=B(:,:);
 
 
 
-% figure(100),title('×ÜµÄ¼ÓÈ¨Öµ');
+% figure(100),title('æ€»çš„åŠ æƒå€¼');
 % imshow(outrgb);
 imwrite(outrgb,strcat(Names,'result.png'));
 % 
