@@ -13,22 +13,22 @@ for a=100:100:a1
                 
                 
                 
-                k1=a;%最短路径权值
-                k2=b;%MST权值
-                k3=c;%超像素面积权值
-                k4=1;%节点的度权值
-                LevelPresever=d;%需要保持多少百分比
+                k1=a;%shortest path (SP)
+                k2=b;%the minimum spanning tree (MST) pruning(MSTP)
+                k3=c;%superpixel area (SA)
+                k4=1;% node degree (ND)
+                LevelPresever=d;
                 
                 Names=strcat(num2str(k1),'_',num2str(k2),'_',num2str(k3),'_',num2str(k4),'_',num2str(LevelPresever));
                 
-                src=imread('Original River Networks.png');
+                src=imread('Original River Networks.png');%input
                 
                 
                 
-                superpixelNum=load('superpixelNum.txt');
-                superpixelNum2=load('superpixelNum2.txt');
-                superpixelNum3=load('superpixelNum3.txt');
-                superpixelNum4=load('superpixelNum4.txt');
+                superpixelNum=load('superpixelNum.txt');%input
+                superpixelNum2=load('superpixelNum2.txt');%input
+                superpixelNum3=load('superpixelNum3.txt');%input
+                superpixelNum4=load('superpixelNum4.txt');%input
                 
                 superpixelNum=superpixelNum';
                 superpixelNum2=superpixelNum2';
@@ -51,7 +51,8 @@ for a=100:100:a1
                 
                 rgb=src;
                 
-%                 diplayColor(Names,Presever,rgb,sumQZ2);
+                diplayColor(Names,Presever,rgb,sumQZ2);
+
                 
                 
                 %根据superpixelNum中的每个节点的次数 按灰度等级 显示每个超像素的重要性
@@ -236,38 +237,8 @@ imshow(outrgb);
 
 imwrite(outrgb,'NrsuperpixelNum2.png');
                 
-       imwrite(outrgb,'mstlevel.png');
-         
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+imwrite(outrgb,'mstlevel.png');%Figure 9. MSTP, SP, ND and SA weights of the river network superpixels at two different levels.
+        
             end
             
             
@@ -338,7 +309,7 @@ outrgb(:,:,3)=B(:,:);
 
 % figure(100),title('总的加权值');
 % imshow(outrgb);
-imwrite(outrgb,strcat(Names,'result.png'));
+imwrite(outrgb,strcat(Names,'result.png'));% Figure 10. Results of river network selection using the proposed SRNS method.
 % 
 % for ks=1:num
 %     ks
